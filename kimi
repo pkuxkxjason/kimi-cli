@@ -1,0 +1,13 @@
+#!/bin/bash
+# Kimi CLI wrapper script
+# Usage: kimi "your question" or echo "question" | kimi
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+if [ $# -eq 0 ]; then
+    # No arguments, read from stdin
+    python3 "$SCRIPT_DIR/kimi.py"
+else
+    # Arguments provided, pass them as input
+    echo "$*" | python3 "$SCRIPT_DIR/kimi.py"
+fi
